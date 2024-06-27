@@ -4,7 +4,8 @@
 
 package com.mycompany.boletosdeavion;
 
-import interfaces.InicioDeSesion;
+
+import interfaces.Inicio;
 
 /**
  *
@@ -13,7 +14,7 @@ import interfaces.InicioDeSesion;
 public class BoletosDeAvion {
 
     public static void main(String[] args) {
-        InicioDeSesion inicio = new InicioDeSesion();
+        Inicio inicio = new Inicio();
         inicio.setVisible(true);
        
     }
