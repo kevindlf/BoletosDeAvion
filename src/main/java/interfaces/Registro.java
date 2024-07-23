@@ -7,6 +7,10 @@ package interfaces;
 import conexion.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,174 +51,155 @@ public class Registro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
         txtRepetirContra = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Registro de usuario");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Nombre");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 312, 22));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Apellido");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setText("Email");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setText("Contraseña");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
-        bntGuardar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 312, 22));
+
+        txtCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 312, 22));
+
+        bntGuardar.setBackground(new java.awt.Color(102, 153, 255));
+        bntGuardar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        bntGuardar.setForeground(new java.awt.Color(255, 255, 255));
         bntGuardar.setText("Registrarte");
         bntGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntGuardarActionPerformed(evt);
             }
         });
+        jPanel1.add(bntGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 130, -1));
 
-        bntVolver.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        bntVolver.setBackground(new java.awt.Color(102, 153, 255));
+        bntVolver.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        bntVolver.setForeground(new java.awt.Color(255, 255, 255));
         bntVolver.setText("Volver al inicio");
         bntVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntVolverActionPerformed(evt);
             }
         });
+        jPanel1.add(bntVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 180, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setText("Repetir contraseña");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 115, -1));
 
-        txtContraseña.setText("jPasswordField2");
+        txtContraseña.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 312, 22));
 
-        txtRepetirContra.setText("jPasswordField2");
+        txtRepetirContra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        jPanel1.add(txtRepetirContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 312, 22));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
-                .addGap(0, 58, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(bntVolver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtContraseña)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(bntGuardar)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtRepetirContra))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtRepetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(bntGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bntVolver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setOpaque(true);
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 370, 510));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Escritorio\\Imagenes Boleto de Avion\\Logo.jpeg")); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Escritorio\\Imagenes Boleto de Avion\\Nubes.jpeg")); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 810, 530));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 828, 551));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-    String nombre=txtNombre.getText();
-    String apellido=txtApellido.getText();
-    String correo=txtCorreo.getText();
-    String contra=txtContraseña.getText();
-    String repetirContra=txtRepetirContra.getText();
+    String nombre = txtNombre.getText();
+    String apellido = txtApellido.getText();
+    String correo = txtCorreo.getText();
+    String contra = txtContraseña.getText();
+    String repetirContra = txtRepetirContra.getText();
     
-    if(nombre.isEmpty()||apellido.isEmpty()||correo.isEmpty()||contra.isEmpty()||repetirContra.isEmpty()){
-        JOptionPane.showMessageDialog(null,"DEBE COMPLETAR LOS DATOS");
-    }else{
-        try{
-            String consulta="INSERT INTO usuarios (nombre, apellido, correo, contraseña, repetir_contraseña) VALUES (?, ?, ?, ?,?)";
-            PreparedStatement ps=cn.prepareStatement(consulta);
-              ps.setString(1, nombre);
-              ps.setString(2, apellido);
-              ps.setString(3, correo);
-              ps.setString(4, contra);
-              ps.setString(5, repetirContra);
+    if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || contra.isEmpty() || repetirContra.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "DEBE COMPLETAR LOS DATOS");
+    } else if (!contra.equals(repetirContra)) {
+        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+    } else if (!isValidEmail(correo)) {
+        JOptionPane.showMessageDialog(this, "Formato de email incorrecto");
+    } else if (isEmailInUse(correo)) {
+        JOptionPane.showMessageDialog(this, "El correo ya está en uso");
+    } else {
+        try {
+            String consulta = "INSERT INTO usuarios (nombre, apellido, correo, contraseña, repetir_contraseña) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = cn.prepareStatement(consulta);
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, correo);
+            ps.setString(4, contra);
+            ps.setString(5, repetirContra);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Los datos de guardaron correctamente");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo guardar el usuario"+e);
+            JOptionPane.showMessageDialog(null, "Los datos se guardaron correctamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo guardar el usuario: " + e);
         }
     }
     }//GEN-LAST:event_bntGuardarActionPerformed
-
+ private boolean isValidEmail(String email) {
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+ private boolean isEmailInUse(String email) {
+    boolean inUse = false;
+    try {
+        String query = "SELECT * FROM usuarios WHERE correo = ?";
+        PreparedStatement ps = cn.prepareStatement(query);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        inUse = rs.next();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return inUse;
+}
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -234,6 +219,9 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField txtApellido;
